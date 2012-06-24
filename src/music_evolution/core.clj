@@ -3,6 +3,11 @@
 
 (definst sin-key [freq 200] (sin-osc freq))
 
+(defn avg [& nums]
+  {:pre [(> (count nums) 0)]}
+  (/ (reduce + nums)
+     (count nums)))
+
 (defn make-chord
   ([] (make-chord 3 0 6000))
   ([num min max]
@@ -29,6 +34,5 @@
   [chord]
 
   (let [new-chord (mutate-chord chord)]
-    (stop)
     (play-chord new-chord)
     new-chord))
