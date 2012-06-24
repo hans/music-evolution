@@ -36,3 +36,7 @@
   (let [new-chord (mutate-chord chord)]
     (play-chord new-chord)
     new-chord))
+
+(defn mate-chords
+  [& chords]
+  (apply (partial map avg) chords))
